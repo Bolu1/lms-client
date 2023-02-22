@@ -27,8 +27,8 @@ const Login: NextPage = () => {
 
   return (
     <Layout title="">
-      <div className="bg-white :bg-gray-900">
-        <div className="flex justify-center items-center h-full px-12 my-6">
+      <div className="bg-white :bg-gray-900 min-h-[100vh] flex w-full justify-center items-center">
+        <div className="flex justify-center items-center h-full md:px-12 my-6">
           <div
             className="hidden z-50 bg-cover lg:block w-[50%]"
             // style={{ backgroundImage: `url(${backUrl})` }}
@@ -37,7 +37,7 @@ const Login: NextPage = () => {
             <Image src={backUrl} alt="power" width={1440} height={1440} />
           </div>
 
-          <div className="flex  w-full mx-auto lg:w-2/6 ">
+          <div className="flex items-center w-full md:mx-auto lg:w-2/6 ">
             <div className="flex-1">
               <div className="text-center">
                 <h2 className="text-4xl font-bold text-center text-black">

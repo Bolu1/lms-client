@@ -44,11 +44,6 @@ const Register: NextPage = () => {
   return (
     <Layout title="" >
       
-      {/* <ToastContainer
-        position="top-center"
-        hideProgressBar={true}
-        closeOnClick
-      /> */}
       <div className="bg-white :bg-gray-900">
         <div className="flex justify-center items-center h-full p-12 my-6">
           <div

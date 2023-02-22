@@ -1,9 +1,10 @@
-// import { MenuIcon } from '@heroicons/react/outline';
+// @ts-ignore
+import { MenuIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useStore } from 'react-redux';
-// import avatarImg from '../../public/images/avatar.png';
+import avatarImg from '../public/login.svg';
 // import { IUserProfile } from '../interfaces/UserProfile';
 
 const Navbar = () => {
@@ -27,7 +28,7 @@ const Navbar = () => {
 						className={`btn btn-ghost drawer-button lg:hidden !rounded-xl ${
 							shouldHide ? 'hidden' : ''
 						}`}>
-						{/* <MenuIcon className='!w-6 !h-6' /> */}
+						<MenuIcon className='!w-6 !h-6' />
 					</label>
 					{!shouldHide && (
 						<div
@@ -36,7 +37,7 @@ const Navbar = () => {
 							<div className='avatar'>
 								<div className='rounded-full w-10 h-10'>
 									<Image
-										src=""
+										src={avatarImg}
 										width={60}
 										height={60}
 										alt='avatar'

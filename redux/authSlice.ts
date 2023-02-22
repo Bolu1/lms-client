@@ -75,14 +75,8 @@ export const registerAction =
       );
       console.log(response.data.data);
       dispatch(loginSuccess(response.data));
-      Cookies.set("userdetails", JSON.stringify(response.data.data), {
-        expires: 2,
-      });
-      Cookies.set("token", JSON.stringify(response.data.data.token), {
-        expires: 2,
-      });
       toast.success("Successful")
-      router.push("/dashboard")
+      router.push("/auth/login")
     } catch (error: any) {
     //   console.log(error instanceof Error);
       toast.error(error.response.data.message);
