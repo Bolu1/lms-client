@@ -10,9 +10,6 @@ const Header = () => {
 	const router = useRouter();
 	const exclude = ['/auth/signin', '/dashboard/print/preview'];
 	const store = useStore();
-	const { server } = store.getState();
-
-	const user: any = server.user;
 
 	useEffect(() => {}, []);
 
