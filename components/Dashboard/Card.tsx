@@ -3,7 +3,7 @@ import hover from "../../assets/images/readinghover.svg";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-function Card(props) {
+function Card(props:any) {
   const router = useRouter();
 
   return (
