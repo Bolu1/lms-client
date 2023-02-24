@@ -95,7 +95,6 @@ export const registerAction =
           password,
         }
       );
-      console.log(response.data.data);
       dispatch(loginSuccess(response.data));
       Cookies.set("userdetails", JSON.stringify(response.data.data), {
         expires: 2,
