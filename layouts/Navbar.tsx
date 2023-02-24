@@ -27,7 +27,6 @@ const Navbar = () => {
   useEffect(() => {}, []);
 
   const shouldHide = exclude.includes(router.pathname);
-  console.log(shouldHide);
 
   return (
     <>

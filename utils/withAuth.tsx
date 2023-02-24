@@ -12,11 +12,12 @@ export const withAuth = (Component: any) => {
     // console.log("a",state)
     useEffect(() => {
       const getUser = async () => {
-        if (!state.token) {
-          router.push("/auth/login");
-        } else {
-          setData(state);
-        }
+        const token = Cookie.get('token')
+                if (!token) {
+                    router.push('/auth/login');
+                } else {
+                    setData(JSON.parse(token));
+                }  
       };
       getUser();
     }, []);
