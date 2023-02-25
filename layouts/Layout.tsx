@@ -7,7 +7,9 @@ import Navbar from './Navbar';
 
 const Layout = ({ children, title, user }: { children: any; title: string; user?:any }) => {
 	return (
-		<div>
+		<div 
+		style={{ maxWidth: "100vw" }}
+		>
 			<Head>
 				<link rel='preload' href='/fonts/poppins/Poppins-Regular.ttf' as='font' crossOrigin='' />
 				<title>{title ?? 'LMS'}</title>
@@ -17,7 +19,9 @@ const Layout = ({ children, title, user }: { children: any; title: string; user?
 				autoClose={5000}
 				hideProgressBar={true}
 				closeOnClick></ToastContainer>
-			<div className='container mx-auto overflow-auto'>
+			<div 
+		style={{ maxWidth: "100vw" }}
+			 className='container w-screen overflow-auto'>
                     <Navbar />
 					<Page user={user as any}>{children}</Page>
 
