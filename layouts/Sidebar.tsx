@@ -71,12 +71,16 @@ const Sidebar = ({
             </div>
             <div className="w-full px-4 flex flex-col justify-center items-center space-y-4 mt-10 h-40">
               <div className=" flex mt-10 justify-center  text-center rounded-full">
-                <div className="w-full h-[30%] w-[30%] rounded-full mt-10">
+                <div 
+                      style={{ marginBottom: "30px" }}
+                className="w-full h-[30%] w-[30%] rounded-full mt-10">
                   <Image src={hover} alt="power" className="mt-10 mb-8" />
                 </div>
               </div>
               <div className="flex flex-col h-full ">
-                <div className="flex items-center space-x-2 w-[30px] mb-8">
+                <div className="flex items-center space-x-2 w-[30px] mb-6"
+                      style={{ marginBottom: "30px" }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -97,7 +101,9 @@ const Sidebar = ({
                   </p>
                 </div>
 
-                <div className="flex items-center  space-x-2 w-[30px]  mb-8">
+                <div className="flex items-center  space-x-2 w-[30px]  mb-6"
+                      style={{ marginBottom: "30px" }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -118,7 +124,9 @@ const Sidebar = ({
                   </p>
                 </div>
 
-                <div className="flex items-center  space-x-2 w-[30px]  mb-8">
+                <div className="flex items-center  space-x-2 w-[30px]  mb-6"
+                      style={{ marginBottom: "30px" }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -137,7 +145,9 @@ const Sidebar = ({
                     Video Call
                   </p>
                 </div>
-                <div className="flex items-center  space-x-2 w-[30px]  mb-8">
+                <div className="flex items-center  space-x-2 w-[30px]  mb-6"
+                      style={{ marginBottom: "30px" }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -162,7 +172,9 @@ const Sidebar = ({
                     Settings
                   </p>
                 </div>
-                <div className="flex items-center space-x-2 w-[30px]  mb-8">
+                <div className="flex items-center space-x-2 w-[30px]  mb-6"
+                      style={{ marginBottom: "30px" }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
