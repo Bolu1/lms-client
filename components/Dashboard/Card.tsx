@@ -6,37 +6,38 @@ import Image from "next/image";
 function Card(props:any) {
   const router = useRouter();
 
+  console.log(props.data)
+
   return (
     <div>
       <div
-        key="{d._id}"
         // onClick={() => router.push(`/class/`)}
         className="max-w-sm overflow-hidden cursor-pointer hover:shadow-2xl  rounded-lg shadow-md "
       >
-        <Image className="object-cover w-full h-40" src={hover} alt="Article" />
+        <img  crossOrigin="anonymous"  className="object-cover w-full h-40" src={process.env.NEXT_PUBLIC_IMAGE_URL+props.data.banner} alt="Banner"  />
 
         <div className="p-6">
           <div>
-            <span className="text-xs font-medium  uppercase  text-blue-400">
-              Class
-            </span>
-            <a className="block mt-2 text-2xl font-semibold  transition-colors duration-200 transform  text-white ">
-              name
+            <a className=" mt-2 text-2xl font-medium  transition-colors duration-200  ">
+              {props.data.class_name}
             </a>
-            <p className="mt-2 text-sm  text-gray-400">info</p>
+            <p className="mt-2 text-sm  text-gray-400">
+            {props.data.class_information}
+
+            </p>
           </div>
 
           <div className="mt-4">
             <div className="">
               <div className="flex items-center">
                 <div className=" h-[20%] w-[20%] rounded-full">
-                  <Image src={hover} alt="power" className="" />
+                  <img crossOrigin="anonymous" src={process.env.NEXT_PUBLIC_IMAGE_URL+props.data.photo}  alt="power" className="" />
                 </div>
                 <a
                   href="#"
                   className="mx-2 font-semibold text-gray-700  text-gray-200"
                 >
-                  .teacher.name
+                  {props.data.firstname} {props.data.lastname}
                 </a>
               </div>
             </div>

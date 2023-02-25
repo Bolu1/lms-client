@@ -16,7 +16,6 @@ const Sidebar = ({
   const router = useRouter();
 
   const { loading, error, user } = useSelector((state:any) => state.auth);
-  console.log(user)
 
   const variants = {
     open: { opacity: 1, x: "0", transition: { duration: 0.4 } },

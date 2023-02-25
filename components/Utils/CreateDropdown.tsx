@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import CreateClass from "./CreateClass"
+import JoinClass from "./JoinClass"
 
 function CreateDropdown() {
   const [show, setShow] = useState(false);
@@ -27,23 +29,17 @@ function CreateDropdown() {
         </svg>
 
         {show && (
-          <div className="absolute top-20 right-0 z-[100] w-48 py-2 mt-2 bg-white rounded-md shadow-xl :bg-gray-800">
+          <div className="absolute space-y-3 top-20 right-0 z-[100] w-48 py-2 mt-2 bg-white rounded-md shadow-xl :bg-gray-800">
             <a
-              onClick={() => {
-                router.push("/class/join");
-              }}
-              className="block px-4 py-3 text-sm text-gray-600 cursor-pointer transition-colors duration-200 transform :text-gray-300 hover:bg-gray-100 :hover:bg-gray-700 :hover:text-white"
+              className="block px-4 py-3 text-sm text-gray-600 cursor-pointer transition-colors duration-200 transform :text-gray-300 "
             >
               {" "}
-              Join Class{" "}
+              <JoinClass/>
             </a>
             <a
-              onClick={() => {
-                router.push("/class/create");
-              }}
-              className="block px-4 py-3 text-sm text-gray-600 cursor-pointer transition-colors duration-200 transform :text-gray-300 hover:bg-gray-100 :hover:bg-gray-700 :hover:text-white"
+              className="block px-4 py-3 text-sm text-gray-600 cursor-pointer transition-colors duration-200 transform :text-gray-300"
             >
-              Create Class{" "}
+              <CreateClass />
             </a>
           </div>
         )}
