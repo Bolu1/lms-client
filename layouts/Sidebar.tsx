@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { AiOutlineClose } from "react-icons/ai";
-import { Button } from "@material-tailwind/react";
-import Router, { useRouter } from "next/router";
-import hero2 from "../assets/images/fresh.png";
+import { useRouter } from "next/router";
 import hover from "../assets/images/readinghover.svg";
 import Image from "next/image";
-import NProgress from "nprogress";
+import { useSelector } from "react-redux";
 import { MdClose } from "react-icons/md";
 
 const Sidebar = ({
@@ -18,31 +14,10 @@ const Sidebar = ({
   isSidebarOpen: any;
 }) => {
   const router = useRouter();
-  const location = router.pathname;
 
-  const sidebarVariant = {
-    open: {
-      x: 0,
-      transition: {
-        duration: 0.2,
-      },
-    },
-    closed: {
-      x: "100%",
-      transition: {
-        duration: 0.45,
-      },
-    },
-  };
+  const { loading, error, user } = useSelector((state:any) => state.auth);
+  console.log(user)
 
-  const listvariants = {
-    open: {
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-    },
-    closed: {
-      transition: { staggerChildren: 0.1, staggerDirection: -1 },
-    },
-  };
   const variants = {
     open: { opacity: 1, x: "0", transition: { duration: 0.4 } },
     closed: { opacity: 0, x: "-100%", transition: { duration: 0.4 } },
@@ -69,15 +44,26 @@ const Sidebar = ({
                 <MdClose className="w-8 h-8 text-white" />
               </button>
             </div>
-            <div className="w-full px-4 flex flex-col justify-center items-center space-y-4 mt-10 h-40">
+            <div className="w-full px-4 flex flex-col justify-center items-center space-y-4 h-40">
               <div className=" flex mt-10 justify-center  text-center rounded-full">
                 <div 
-                      style={{ marginBottom: "30px" }}
-                className="w-full h-[30%] w-[30%] rounded-full mt-10">
-                  <Image src={hover} alt="power" className="mt-10 mb-8" />
+                      style={{ marginBottom: "30px", width: "160px", height: "160px" }}
+                className="w-full mt-10">
+                  <img 
+                      style={{ marginBottom: "30px", width: "160px", height: "160px" }}
+                  crossOrigin="anonymous" src={process.env.NEXT_PUBLIC_IMAGE_URL+user.photo} alt="power" className="mt-10 mb-8 text-white rounded-full" />
                 </div>
+                
               </div>
               <div className="flex flex-col h-full ">
+                <div className="space-x-2 w-[30px] mb-6"
+                      style={{ marginBottom: "30px", marginTop: "10px" }}
+                >
+                  <p className="py-2 text-white text-xl text-center font-bold text-center bg-violet-700 uppercase">
+                    {user.firstname} {user.lastname}
+                  </p>
+                </div>
+                
                 <div className="flex items-center space-x-2 w-[30px] mb-6"
                       style={{ marginBottom: "30px" }}
                 >

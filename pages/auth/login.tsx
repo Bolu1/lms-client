@@ -15,7 +15,7 @@ const Login: NextPage = () => {
   const router = useRouter();
 
   const dispatch = useDispatch()
-  const { loading, error, user } = useSelector((state:any) => state.auth);
+  const { loading } = useSelector((state:any) => state.auth);
 
 
   const loginHandler = (e: React.FormEvent<EventTarget>) =>{

@@ -12,7 +12,7 @@ const Dashboard: NextPage = () => {
 
   return (
     <Layout title="Dashboard">
-      <section className="mt-24">
+      <section className="mt-24 px-8">
         <div>
           {data.length == 0 && !loading ? (
             <div className=" flex justify-center  w-full h-[100vh]">
