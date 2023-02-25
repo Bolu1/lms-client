@@ -58,13 +58,13 @@ const Navbar = () => {
           <div className="w-[58%]  h-full">
             <ul className="w-full h-full space-x-8 flex items-center">
               <li className="text-base font-semibold">
-                <Link href="">About us</Link>
+                <Link href="#about">About us</Link>
               </li>
               <li className="text-base font-semibold">
-                <Link href="">Contact us</Link>
+                <Link href="#resources">Resources</Link>
               </li>
               <li className="text-base font-semibold">
-                <Link href="">Resources</Link>
+                <Link href="#faq">FAQ</Link>
               </li>
             </ul>
           </div>

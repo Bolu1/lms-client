@@ -3,10 +3,14 @@ import shape1 from "../../assets/images/shape_1.png";
 import shape2 from "../../assets/images/shape_2.png";
 import shape3 from "../../assets/images/line_shape_2.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
+
 
 const About = () => {
+
+  const router = useRouter()
   return (
-    <div>
+    <div id="resources">
       <div className="w-full h-full md:px-10 px-4 pb-6 mt-14">
         <div className="w-full h-[30rem] max-w-[80rem] lg:flex hidden justify-center overflow-hidden items-center mx-auto bg-[#f0f3ff] relative px-10">
           <div className="absolute top-20 left-10">
@@ -23,8 +27,8 @@ const About = () => {
               Explore different classrooms and gain first class knowledge
             </h1>{" "}
             <a
-              href="#_"
-              className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-[#000000] transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group"
+              onClick={()=>{router.push("/auth/register")}}
+              className="relative inline-flex items-center cursor-pointer justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-[#000000] transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group"
             >
               <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-[#000000] group-hover:h-full"></span>
               <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
@@ -80,8 +84,8 @@ const About = () => {
               Explore different classrooms and gain first class knowledge
             </h1>{" "}
             <a
-              href="#_"
-              className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-[#000000] transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group"
+              onClick={()=>{router.push("/auth/register")}}
+              className="relative inline-flex items-center cursor-pointer justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-[#000000] transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group"
             >
               <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-[#000000] group-hover:h-full"></span>
               <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">

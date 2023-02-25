@@ -7,7 +7,7 @@ import Image from "next/image"
 
 const Whatwedo = () => {
   return (
-    <div>
+    <div id="about">
       <h1 className="w-full max-w-[80rem]  mx-auto lg:text-left mt-14 text-[34px] font-bold text-center">
         <span>Our system is an </span>
         <span className="focus-text">easy-to-use</span>

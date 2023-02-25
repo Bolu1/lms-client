@@ -87,7 +87,7 @@ const Sidebar = ({
                     location === "/about" ? "activeLink" : ""
                   }`}
                 >
-                  <Link href="">
+                  <Link href="#about">
                     <div className="text-[#000] text-[1.3rem] tracking-[2.7px] uppercase">
                       <span className="text-black  mr-[11px]">01</span> About us
                     </div>
@@ -103,10 +103,9 @@ const Sidebar = ({
                     location === "/about" ? "activeLink" : ""
                   }`}
                 >
-                  <Link href="">
+                  <Link href="#resources">
                     <div className="text-[#000] text-[1.3rem] tracking-[2.7px] uppercase">
-                      <span className="text-black  mr-[11px]">03</span> Contact
-                      us
+                      <span className="text-black  mr-[11px]">02</span> Resources
                     </div>
                   </Link>
                 </motion.li>
@@ -119,10 +118,10 @@ const Sidebar = ({
                     location === "/about" ? "activeLink" : ""
                   }`}
                 >
-                  <Link href="">
+                  <Link href="#faq">
                     <div className="text-[#000] text-[1.3rem] tracking-[2.7px] uppercase">
-                      <span className="text-black  mr-[11px]">04</span>{" "}
-                      Resources
+                      <span className="text-black  mr-[11px]">03</span>{" "}
+                      FAQ
                     </div>
                   </Link>
                 </motion.li>
@@ -141,7 +140,7 @@ const Sidebar = ({
                       NProgress.start();
                       setTimeout(() => {
                         NProgress.done();
-                        router.push("/register");
+                        router.push("/auth/register");
                       }, 3000);
                     }}
                     nonce={undefined}
