@@ -9,9 +9,9 @@ const Page = ({ children, user }: { children: any; user: any }) => {
 
 
 	return (
-		<>
+		<div className="mt-24">
 				<>{children}</>
-		</>
+		</div>
 	);
 };
 

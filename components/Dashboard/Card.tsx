@@ -6,8 +6,6 @@ import Image from "next/image";
 function Card(props:any) {
   const router = useRouter();
 
-  console.log(props.data)
-
   return (
     <div>
       <div
@@ -31,7 +29,7 @@ function Card(props:any) {
             <div className="">
               <div className="flex items-center">
                 <div className=" h-[20%] w-[20%] rounded-full">
-                  <img crossOrigin="anonymous" src={process.env.NEXT_PUBLIC_IMAGE_URL+props.data.photo}  alt="power" className="" />
+                  <img crossOrigin="anonymous" src={process.env.NEXT_PUBLIC_IMAGE_URL+props.data.photo}  alt="power" className="rounded-full w-12 h-12" />
                 </div>
                 <a
                   href="#"

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import hover from "../assets/images/readinghover.svg";
-import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutAction } from "../redux/authSlice";
+import { toast } from 'react-toastify';
 import { MdClose } from "react-icons/md";
 
 const Sidebar = ({
@@ -13,14 +13,22 @@ const Sidebar = ({
   setIsSidebarOpen: any;
   isSidebarOpen: any;
 }) => {
-  const router = useRouter();
+  
+  const router = useRouter()
+  const dispatch = useDispatch()
 
-  const { loading, error, user } = useSelector((state:any) => state.auth);
+  const { user } = useSelector((state:any) => state.auth);
 
   const variants = {
     open: { opacity: 1, x: "0", transition: { duration: 0.4 } },
     closed: { opacity: 0, x: "-100%", transition: { duration: 0.4 } },
   };
+
+  const logoutHandler = () =>{
+    setIsSidebarOpen(!isSidebarOpen);
+    // @ts-ignore
+    dispatch(logoutAction(toast, router));
+  }
 
   return (
     <div>
@@ -46,11 +54,11 @@ const Sidebar = ({
             <div className="w-full px-4 flex flex-col justify-center items-center space-y-4 h-40">
               <div className=" flex mt-10 justify-center  text-center rounded-full">
                 <div 
-                      style={{ marginBottom: "30px", width: "160px", height: "160px" }}
+                      style={{ marginBottom: "30px", width: "170px", height: "170px" }}
                 className="w-full mt-10">
                   <img 
-                      style={{ marginBottom: "30px", width: "160px", height: "160px" }}
-                  crossOrigin="anonymous" src={process.env.NEXT_PUBLIC_IMAGE_URL+user.photo} alt="power" className="mt-10 mb-8 text-white rounded-full" />
+                      style={{ marginBottom: "30px", width: "170px", height: "170px" }}
+                  crossOrigin="anonymous" src={process.env.NEXT_PUBLIC_IMAGE_URL+user?.photo} alt="power" className="mt-10 mb-8 text-white rounded-full" />
                 </div>
                 
               </div>
@@ -59,12 +67,13 @@ const Sidebar = ({
                       style={{ marginBottom: "30px", marginTop: "10px" }}
                 >
                   <p className="py-2 text-white text-xl text-center font-bold text-center bg-violet-700 uppercase">
-                    {user.firstname} {user.lastname}
+                    {user?.firstname} {user?.lastname}
                   </p>
                 </div>
                 
-                <div className="flex items-center space-x-2 w-[30px] mb-6"
+                <div className="flex items-center space-x-2 w-[30px] cursor-pointer mb-6"
                       style={{ marginBottom: "30px" }}
+                onClick={()=>{router.push("/dashboard")}}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +95,7 @@ const Sidebar = ({
                   </p>
                 </div>
 
-                <div className="flex items-center  space-x-2 w-[30px]  mb-6"
+                <div className="flex items-center  space-x-2 w-[30px] cursor-pointer  mb-6"
                       style={{ marginBottom: "30px" }}
                 >
                   <svg
@@ -109,7 +118,7 @@ const Sidebar = ({
                   </p>
                 </div>
 
-                <div className="flex items-center  space-x-2 w-[30px]  mb-6"
+                <div className="flex items-center  space-x-2 w-[30px] cursor-pointer  mb-6"
                       style={{ marginBottom: "30px" }}
                 >
                   <svg
@@ -130,8 +139,9 @@ const Sidebar = ({
                     Video Call
                   </p>
                 </div>
-                <div className="flex items-center  space-x-2 w-[30px]  mb-6"
+                <div className="flex items-center  space-x-2 w-[30px] cursor-pointer  mb-6"
                       style={{ marginBottom: "30px" }}
+                onClick={()=>{router.push("/dashboard/settings")}}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -152,12 +162,13 @@ const Sidebar = ({
                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-
                   <p className="py-2 text-white text-xl font-bold text-center bg-violet-700 uppercase">
                     Settings
                   </p>
                 </div>
-                <div className="flex items-center space-x-2 w-[30px]  mb-6"
+                <div 
+                onClick={()=>{logoutHandler()}}
+                className="flex items-center space-x-2 w-[30px] cursor-pointer mb-6"
                       style={{ marginBottom: "30px" }}
                 >
                   <svg

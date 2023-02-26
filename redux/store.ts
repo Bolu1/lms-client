@@ -3,10 +3,12 @@ import { createStore, applyMiddleware } from 'redux';
 
 import authReducer from "./authSlice";
 import classesReducer from "./classesSlice";
+import userReducer from "./userSlice";
 const store = configureStore({
   reducer: {
     auth: authReducer,
     classes: classesReducer,
+    users: userReducer,
   },
 });
 export default store;

@@ -43,12 +43,29 @@ const authSlice = createSlice({
     loginSuccess(state:InitialState, action:any) {
       state.loading = false;
       state.error = null;
-      state.user = action.payload.user;
+      state.user = action.payload;
     },
     loginFailure(state:InitialState, action?:any) {
       state.loading = false;
       state.error = action.payload.error;
       state.user = null;
+    },
+    logout(state:InitialState) {
+      state.loading = false;
+      state.user = null;
+    },
+    updateUserStart(state:InitialState) {
+      state.loading = true;
+      state.error = null;
+    },
+    updateUserSuccess(state:InitialState, action:any) {
+      state.loading = false;
+      state.error = null;
+      state.user = action.payload;
+    },
+    updateUserFailure(state:InitialState, action:any) {
+      state.loading = false;
+      state.error = action.payload.error;
     },
   },
 });
@@ -59,6 +76,10 @@ export const {
   loginStart,
   loginSuccess,
   loginFailure,
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
+  logout
 } = authSlice.actions;
 export const registerAction =
   (email: string, firstname: string, lastname: string, password: string, toast:any, router:any) => async (dispatch:any) => {
@@ -95,7 +116,7 @@ export const registerAction =
           password,
         }
       );
-      dispatch(loginSuccess(response.data));
+      dispatch(loginSuccess(response.data.data));
       Cookies.set("userdetails", JSON.stringify(response.data.data), {
         expires: 2,
       });
@@ -108,6 +129,52 @@ export const registerAction =
     //   console.log(error instanceof Error);
       toast.error(error.response.data.message);
       dispatch(loginFailure( error ));
+    }
+  };
+  export const logoutAction =
+  (toast:any, router:any) => async (dispatch:any) => {
+    try {
+      router.push("/auth/login")
+      dispatch(logout());
+      Cookies.remove("token");
+      Cookies.remove("userdetails");
+      toast.success("Successful")
+    } catch (error: any) {
+      console.log(error instanceof Error);
+    }
+  };
+  export const updateUserAction =
+  (filename: any, firstname: string, lastname: string, password: string, newPassword: string, token: string, toast:any, router:any) => async (dispatch:any) => {
+    try {
+      dispatch(updateUserStart());
+      const formData = new FormData();
+      formData.append("firstname", firstname);
+      formData.append("lastname", lastname);
+      formData.append("password", password);
+      formData.append("newPassword", newPassword);
+      formData.append("image", filename);
+      const response = await axios.patch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}users/update`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data.data);
+      dispatch(updateUserSuccess(response.data.data));
+      Cookies.set("userdetails", JSON.stringify(response.data.data), {
+        expires: 2,
+      });
+      Cookies.set("token", JSON.stringify(response.data.data.token), {
+        expires: 2,
+      });
+      toast.success("Successful")
+    } catch (error: any) {
+    //   console.log(error instanceof Error);
+      toast.error(error.response.data.message);
+      dispatch(updateUserFailure( error ));
     }
   };
 

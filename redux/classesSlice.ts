@@ -43,6 +43,20 @@ const classesSlice = createSlice({
     fetchClassesFailure(state:InitialState, action:any) {
       state.loading = false;
       state.error = action.payload.error;
+    },
+    joinClassStart(state:InitialState) {
+      state.loading = true;
+      state.error = null;
+    },
+    joinClassSuccess(state:InitialState, action:any) {
+      state.loading = false;
+      state.error = null;
+      state.classes = action.payload.classes;
+
+    },
+    joinClassFailure(state:InitialState, action:any) {
+      state.loading = false;
+      state.error = action.payload.error;
     }
   },
 });
@@ -53,12 +67,14 @@ export const {
   fetchClassesStart,
   fetchClassesSuccess,
   fetchClassesFailure,
+  joinClassStart,
+  joinClassSuccess,
+  joinClassFailure,
 } = classesSlice.actions;
 export const createClassAction =
   (className: string, classInformation: string, filename: string, token:string, toast:any, router:any) => async (dispatch:any) => {
     try {
       dispatch(createClassStart());
-      console.log(filename)
       const formData = new FormData();
       formData.append("className", className);
       formData.append("classInformation", classInformation);
@@ -106,5 +122,31 @@ export const createClassAction =
       dispatch(fetchClassesFailure( error ));
     }
   };  
+
+
+  export const joinClassAction =
+  (classCode:string ,token:string, toast:any, router:any) => async (dispatch:any) => {
+    try {
+      dispatch(joinClassStart());
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}classes/join`,
+        {classCode:classCode},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data.data);
+      dispatch(joinClassSuccess(response.data.data));
+      toast.success("Successful")
+      router.push(`/dashboard/class/${response.data.data}`)
+    } catch (error: any) {
+      console.log("ss")
+      //   console.log(error instanceof Error);
+      toast.error(error.response.data.message);
+      dispatch(joinClassFailure( error ));
+    }
+  };
 
 export default classesSlice.reducer;

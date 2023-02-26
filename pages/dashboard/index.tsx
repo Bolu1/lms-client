@@ -32,7 +32,7 @@ const Dashboard: NextPage = () => {
 
   return (
     <Layout title="Dashboard">
-      <section className="mt-24 px-8">
+      <section className="px-8">
         <div>
           {loading ? (
             <div className="mt-[20vh]">
