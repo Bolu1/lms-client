@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import React, { useState } from "react";
 import Layout from "../../layouts/Layout";
 import { useRouter } from "next/router";
-import Loader from '../../components/Utils/Loader';
-import { toast } from 'react-toastify';
+import Loader from "../../components/Utils/Loader";
+import { toast } from "react-toastify";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../redux/authSlice";
@@ -14,27 +14,33 @@ const Login: NextPage = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const dispatch = useDispatch()
-  const { loading } = useSelector((state:any) => state.auth);
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state: any) => state.auth);
 
-
-  const loginHandler = (e: React.FormEvent<EventTarget>) =>{
-    e.preventDefault()
+  const loginHandler = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
 
     // @ts-ignore
     dispatch(loginAction(email, password, toast, router));
-  }
+  };
 
   return (
     <Layout title="">
-      <div className="bg-white :bg-gray-900 min-h-[100vh] flex w-full justify-center items-center">
+      <div className="bg-white :bg-gray-900 min-h-[100vh]  flex w-full justify-center items-center">
         <div className="flex justify-center items-center h-full md:px-12 my-6">
           <div
             className="hidden z-50 bg-cover lg:block w-[50%]"
             // style={{ backgroundImage: `url(${backUrl})` }}
           >
-            {/* <div className="flex items-center h-full px-20 bg-opacity-40"></div> */}
-            <Image src={backUrl} alt="power" width={1440} height={1440} />
+            <div className="flex items-center h-full bg-opacity-40">
+              <img
+                style={{ width: "100vw", height: "90vh" }}
+                crossOrigin="anonymous"
+                src={backUrl}
+                alt="power"
+                className="mt-5 mb-8 text-white "
+              />
+            </div>
           </div>
 
           <div className="flex items-center w-full md:mx-auto lg:w-2/6 ">
@@ -46,7 +52,7 @@ const Login: NextPage = () => {
               </div>
 
               <div className="mt-8">
-                <form onSubmit={(e)=>loginHandler(e)}>
+                <form onSubmit={(e) => loginHandler(e)}>
                   <div>
                     <label className="block mb-2 text-sm text-black :text-gray-200">
                       Email

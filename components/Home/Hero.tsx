@@ -53,7 +53,7 @@ const Hero = () => {
           <div className="absolute bottom-0 lg:w-[192px] lg:h-[192px] xl:w-[232px] xl:h-[232px] bg-[#e78ffe] rounded-xl  left-0">
             <Image src={hero2} alt="" className="absolute bottom-0" />
           </div>
-          <div className="absolute hero3 top-[20%] lg:w-[245px] lg:h-[322px] xl:w-[305px] xl:h-[392px] bg-[#66c3fd] rounded-xl  right-0">
+          <div className="absolute hero3 top-[50%] lg:w-[245px] lg:h-[322px] xl:w-[305px] xl:h-[392px] bg-[#66c3fd] rounded-xl  right-0">
             <Image src={hero3} alt="" className="absolute bottom-0" />
           </div>
         </div>

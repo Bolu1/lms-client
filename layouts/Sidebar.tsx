@@ -58,7 +58,7 @@ const Sidebar = ({
                 className="w-full mt-10">
                   <img 
                       style={{ marginBottom: "30px", width: "170px", height: "170px" }}
-                  crossOrigin="anonymous" src={process.env.NEXT_PUBLIC_IMAGE_URL+user?.photo} alt="power" className="mt-10 mb-8 text-white rounded-full" />
+                  crossOrigin="anonymous" src={process.env.NEXT_PUBLIC_IMAGE_URL+user?.photo} alt="power" className="mt-10 mb-8 text-white rounded-full object-cover" />
                 </div>
                 
               </div>
@@ -71,8 +71,8 @@ const Sidebar = ({
                   </p>
                 </div>
                 
-                <div className="flex items-center space-x-2 w-[30px] cursor-pointer mb-6"
-                      style={{ marginBottom: "30px" }}
+                <div className=" flex items-center space-x-2 w-[30px] cursor-pointer mb-6"
+                      style={{ marginBottom: "30px", marginLeft: "2rem"}}
                 onClick={()=>{router.push("/dashboard")}}
                 >
                   <svg
@@ -96,7 +96,7 @@ const Sidebar = ({
                 </div>
 
                 <div className="flex items-center  space-x-2 w-[30px] cursor-pointer  mb-6"
-                      style={{ marginBottom: "30px" }}
+                      style={{ marginBottom: "30px" , marginLeft: "2rem" }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ const Sidebar = ({
                 </div>
 
                 <div className="flex items-center  space-x-2 w-[30px] cursor-pointer  mb-6"
-                      style={{ marginBottom: "30px" }}
+                      style={{ marginBottom: "30px" , marginLeft: "2rem" }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +140,7 @@ const Sidebar = ({
                   </p>
                 </div>
                 <div className="flex items-center  space-x-2 w-[30px] cursor-pointer  mb-6"
-                      style={{ marginBottom: "30px" }}
+                      style={{ marginBottom: "30px" , marginLeft: "2rem" }}
                 onClick={()=>{router.push("/dashboard/settings")}}
                 >
                   <svg
@@ -169,7 +169,7 @@ const Sidebar = ({
                 <div 
                 onClick={()=>{logoutHandler()}}
                 className="flex items-center space-x-2 w-[30px] cursor-pointer mb-6"
-                      style={{ marginBottom: "30px" }}
+                      style={{ marginBottom: "30px" , marginLeft: "2rem" }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
