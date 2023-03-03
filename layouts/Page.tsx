@@ -7,13 +7,29 @@ import { useRouter } from 'next/router';
 const Page = ({ children, user }: { children: any; user: any }) => {
 	const router = useRouter();
 
+	const exclude = ['/auth/login', '/' , '/auth/register'];
+	const shouldHide = exclude.includes(router.pathname);
+
+
 
 	return (
-		<div 
+		<>
+		{shouldHide?
+		(
+		<div
+		className="">
+				<>{children}</>
+		</div>
+		):
+		(
+			<div 
 		style={{ marginTop: "6rem" }}
 		className="mt-24">
 				<>{children}</>
 		</div>
+		)
+		}
+		</>
 	);
 };
 

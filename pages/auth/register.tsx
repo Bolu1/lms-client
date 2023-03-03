@@ -45,13 +45,20 @@ const Register: NextPage = () => {
     <Layout title="" >
       
       <div className="bg-white :bg-gray-900">
-        <div className="flex justify-center items-center h-full p-12 my-6">
+        <div className="flex justify-center items-center h-full p-8">
           <div
             className="hidden z-50 bg-cover lg:block w-[50%]"
             // style={{ backgroundImage: `url(${backUrl})` }}
           >
-            {/* <div className="flex items-center h-full px-20 bg-opacity-40"></div> */}
-            <Image src={backUrl} alt='power' width={1440} height={1440}/>
+            <div className="flex items-center h-full bg-opacity-40">
+              <img
+                style={{ width: "100vw", height: "90vh" }}
+                crossOrigin="anonymous"
+                src={backUrl}
+                alt="power"
+                className="mt-5 mb-8 text-white "
+              />
+            </div>
           </div>
 
           <div className="flex  w-full mx-auto lg:w-2/6 ">
