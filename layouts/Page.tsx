@@ -23,7 +23,7 @@ const Page = ({ children, user }: { children: any; user: any }) => {
 		):
 		(
 			<div 
-		style={{ marginTop: "6rem" }}
+		style={{ marginTop: "6rem", marginBottom: "6rem"  }}
 		className="mt-24">
 				<>{children}</>
 		</div>

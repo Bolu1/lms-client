@@ -32,7 +32,7 @@ const Dashboard: NextPage = () => {
 
   return (
     <Layout title="Dashboard">
-      <section className="px-8">
+      <section className="px-8 ">
         <div>
           {loading ? (
             <div className="mt-[20vh]">
@@ -50,7 +50,7 @@ const Dashboard: NextPage = () => {
                   </div>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 px-3 py-4 gap-y-10 sm:grid-cols-1 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 w-full">
+                <div className="grid grid-cols-1 px-3 py-4 gap-y-10 sm:grid-cols-1 md:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 w-full">
                   {data.map((item: any) => <Card data={item} />)}
                 </div>
               )}

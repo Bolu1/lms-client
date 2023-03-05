@@ -123,7 +123,6 @@ export const createClassAction =
     }
   };  
 
-
   export const joinClassAction =
   (classCode:string ,token:string, toast:any, router:any) => async (dispatch:any) => {
     try {
@@ -148,5 +147,81 @@ export const createClassAction =
       dispatch(joinClassFailure( error ));
     }
   };
+
+
+  export const fetchOneClassAction =
+  (id:string ,token:string, toast:any) => async (dispatch:any) => {
+    try {
+      dispatch(joinClassStart());
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}classes/fetch/class/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data.data);
+      dispatch(joinClassSuccess(response.data.data));
+      return response.data.data
+    } catch (error: any) {
+      console.log("ss")
+      //   console.log(error instanceof Error);
+      toast.error(error.response.data.message);
+      dispatch(joinClassFailure( error ));
+    }
+  };
+
+  export const createNewPost =
+  (content: string, classId: string, filename: any, token:string, toast:any) => async (dispatch:any) => {
+    try {
+      dispatch(createClassStart());
+      const formData = new FormData();
+      formData.append("classId", classId);
+      formData.append("content", content);
+      formData.append("file", filename);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}classes/post/new`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data.data);
+      dispatch(createClassSuccess(response.data));
+      toast.success("Successful")
+    } catch (error: any) {
+      console.log("ss")
+      //   console.log(error instanceof Error);
+      toast.error(error.response.data.message);
+      dispatch(createClassFailure( error ));
+    }
+  };
+
+  export const fetchPosts =
+  (id:string , page:string ,token:string, toast:any) => async (dispatch:any) => {
+    try {
+      dispatch(fetchClassesStart());
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}classes/post/${id}?offset=${page}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data.data);
+      dispatch(fetchClassesSuccess(response.data.data));
+      return response.data.data;
+    } catch (error: any) {
+      console.log("ss")
+      //   console.log(error instanceof Error);
+      toast.error(error.response.data.message);
+      dispatch(fetchClassesFailure( error ));
+    }
+  };  
+
 
 export default classesSlice.reducer;

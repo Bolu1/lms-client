@@ -74,3 +74,19 @@ body {
 .hero3 {
   transform: translateY(-50%);
 }
+.navoption li {
+  width: 58%;
+}
+
+@media screen and (max-width: 600px) {
+  .navoption {
+  width: 100%;
+    
+  }
+
+  .navoptionul li {
+    width: 100%;
+    font-size: 0.75rem;
+    /* line-height: 1rem;  */
+    }
+}

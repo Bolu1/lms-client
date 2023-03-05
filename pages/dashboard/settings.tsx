@@ -44,7 +44,7 @@ const Settings: NextPage = () => {
 
   return (
     <Layout title="Settings">
-         <section className="max-w-4xl lg:mt-20 p-6 mx-auto bg-white rounded-md shadow-md :bg-gray-800 my-20">
+         <section className="max-w-4xl  lg:mt-20 p-6 mx-auto bg-white rounded-md shadow-md :bg-gray-800 my-20">
         <h2 className="text-lg font-semibold text-gray-700 capitalize :text-white">
           Edit Account
         </h2>

@@ -5,7 +5,7 @@ import Page from './Page';
 import Navbar from './Navbar';
 // import { IUserProfile } from '../interfaces/UserProfile';
 
-const Layout = ({ children, title, user }: { children: any; title: string; user?:any }) => {
+const Layout = ({ children, title, user, tab, setTab }: { children: any; title: string; user?:any, tab?:any, setTab?:any }) => {
 	return (
 		<div 
 		style={{ maxWidth: "100vw" }}
@@ -21,8 +21,8 @@ const Layout = ({ children, title, user }: { children: any; title: string; user?
 				closeOnClick></ToastContainer>
 			<div 
 		style={{ maxWidth: "100vw" }}
-			 className='container w-screen overflow-auto'>
-                    <Navbar />
+			 className='container  overflow-auto'>
+                    <Navbar tab={tab} setTab={setTab}/>
 					<Page user={user as any}>{children}</Page>
 
 			</div>

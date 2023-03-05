@@ -14,9 +14,11 @@ import Sidebar from "./Sidebar";
 import CreateDropdown from "../components/Utils/CreateDropdown";
 // import { IUserProfile } from '../interfaces/UserProfile';
 
-const Navbar = () => {
+const Navbar = (props:any) => {
   const router = useRouter();
   const exclude = ["/auth/register", "/auth/login", "/"];
+  const showAddButton = ["/dashboard"];
+  const showTabsOptions = ["/dashboard/class/**"];
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   // const store = useStore();
@@ -27,6 +29,8 @@ const Navbar = () => {
   useEffect(() => {}, []);
 
   const shouldHide = exclude.includes(router.pathname);
+  const shouldNotHideAddBotton = showAddButton.includes(router.pathname);
+  const shouldShowTabs = showTabsOptions.includes(router.pathname);
 
   return (
     <>
@@ -46,11 +50,11 @@ const Navbar = () => {
           </label>
           {!shouldHide && (
             <header
-              className={`w-full h-[4rem] mt-4  flex  fixed top-0  transition-all  ${
+              className={`w-full h-[4rem] mt-4 flex fixed top-0 z-30 transition-all  ${
                 isScrolled && " "
               }`}
             >
-              <div className="w-full xl:max-w-[60%] lg:max-w-[70%] z-[50] relative px-7  h-full items-center rounded-full bg-white/80 backdrop-blur-md drop-shadow-md border-gray-300 border flex justify-between mx-auto">
+              <div className="w-full xl:max-w-[60%] lg:max-w-[70%] relative px-7  h-full items-center rounded-full bg-white/80 backdrop-blur-md drop-shadow-md border-gray-300 border flex justify-between mx-auto">
                 <div
                   onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                   className="w-[50px] h-[50px] mx-12 cursor-pointer flex justify-center items-center rounded-full bg-white/80 backdrop-blur-md drop-shadow-md "
@@ -58,12 +62,51 @@ const Navbar = () => {
                   <BiMenu className="w-8 h-8" />
                 </div>
                 <div className="w-[20%] cursor-pointer">
-                  <h1 className="text-2xl pl-12 font-bold">LMS</h1>
+                  <h1 className="hidden lg:block text-2xl pl-12 font-bold">LMS</h1>
                 </div>
-                <div className="w-[58%]  h-full">
+                {/* class tabs */}
+
+                <div className="navoption w-[58%]  h-full">
+                {props.tab &&
+                <ul className=" navoptionul w-full h-full  flex items-center">
+              <li 
+              onClick={()=>props.setTab("class")}
+              className={`text-base cursor-pointer ${props.tab == "class" ?("font-semibold "): ("text-gray-500") }`}>
+                Class
+                {props.tab == "class" &&
+                <div style={{ height: "3px"}}
+                 className="bg-black w-[30%]  hidden lg:block  rounded-full"></div>
+            }
+              </li>
+              <li 
+              onClick={()=>props.setTab("tasks")}
+              className={`text-base cursor-pointer ${props.tab == "tasks" ?("font-semibold "): ("text-gray-500") } `}>
+                Tasks
+                {props.tab == "tasks" &&
+
+                <div
+                      style={{ height: "3px"}}
+                 className="bg-black w-[30%] hidden lg:block  rounded-full"></div>
+          }
+              </li>
+              <li 
+              onClick={()=>props.setTab("people")}
+              className={`text-base cursor-pointer ${props.tab == "people" ?("font-semibold "): ("text-gray-500") } `}>
+                People
+                {props.tab == "people" &&
+
+                <div
+                      style={{ height: "3px"}}
+                 className="bg-black w-12 rounded-full hidden lg:block  "></div>
+        }
+              </li>
+            </ul>
+          }
                 </div>
                 <div className=" ">
+                  {shouldNotHideAddBotton &&
                   <CreateDropdown />
+                  }
                 </div>
               </div>
             </header>
