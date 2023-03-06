@@ -3,12 +3,13 @@ import { withAuth } from "../../../utils/withAuth";
 import Layout from "../../../layouts/Layout";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOneClassAction, fetchPosts } from "../../../redux/classesSlice";
+import { fetchOneClassAction, fetchPosts, fetchPeopleAction } from "../../../redux/classesSlice";
 import { toast } from "react-toastify";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Post from "../../../components/Class/Post";
 import PostCard from "../../../components/Class/PostCard";
+import People from "../../../components/Class/People";
 import hover from "../../../assets/images/readinghover.svg";
 import Loader from "../../../components/Utils/Loader";
 
@@ -21,12 +22,15 @@ const Class: NextPage = () => {
   const [slug, setSlug] = useState("");
   const [page, setPage] = useState(0);
   const [showMoreLoading, setShowMoreLoading] = useState(false);
+  const [teachers, setTeachers] = useState([])
+  const [students, setStudents] = useState([])
 
   const { user } = useSelector((state: any) => state.auth);
   const router = useRouter();
   const dispatch = useDispatch();
 
   const fetch = async (id: any = slug, page: number = 0) => {
+    setLoading(true);
     console.log(id);
     // @ts-ignore
     const result = await dispatch(fetchOneClassAction(id, user.token, toast));
@@ -64,6 +68,10 @@ const Class: NextPage = () => {
     setShowMoreLoading(false);
   };
 
+  // useeffect to change tabs
+    // @ts-ignore
+
+
   // @ts-ignore
   useEffect(() => {
     if (router.isReady) {
@@ -94,6 +102,8 @@ const Class: NextPage = () => {
             <Loader />
           </div>
         ) : (
+          <>
+          {tab == "class" &&
           <div className="px-5 w-[100vh] md:w-full lg:px-32">
             {/* header */}
             <div className="min-h-[16rem] overflow-hidden relative rounded-2xl bg-black/50 backdrop-blur-sm ">
@@ -191,6 +201,15 @@ const Class: NextPage = () => {
               )}
             </div>
           </div>
+          }
+
+          {tab == "people" &&
+        // @ts-ignore
+          <People tab={tab} slug={slug}/>
+          }
+
+
+          </>
         )}
       </div>
     </Layout>

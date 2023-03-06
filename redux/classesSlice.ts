@@ -223,5 +223,27 @@ export const createClassAction =
     }
   };  
 
+  export const fetchPeopleAction =
+  (id:string, token:string, toast:any) => async (dispatch:any) => {
+    try {
+      dispatch(fetchClassesStart());
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}classes/fetch/people/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data.data);
+      dispatch(fetchClassesSuccess(response.data.data));
+      return response.data.data;
+    } catch (error: any) {
+      console.log("ss")
+      //   console.log(error instanceof Error);
+      toast.error(error.response.data.message);
+      dispatch(fetchClassesFailure( error ));
+    }
+  };  
 
 export default classesSlice.reducer;
