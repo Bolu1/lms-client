@@ -6,7 +6,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@appbuilder/react": "file:../../../Downloads/videoconfrencing/Builds/react-sdk/appbuilder-react-2.0.9-lCBX3eJDPW.tgz",
     "@headlessui/react": "^1.7.12",
     "@heroicons/react": "^1.0.6",
     "@material-tailwind/react": "^1.2.5",
