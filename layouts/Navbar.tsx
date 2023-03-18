@@ -61,8 +61,8 @@ const Navbar = (props:any) => {
                 >
                   <BiMenu className="w-8 h-8" />
                 </div>
-                <div className="w-[20%] cursor-pointer">
-                  <h1 className="hidden lg:block text-2xl pl-12 font-bold">LMS</h1>
+                <div className="w-[20%] hidden lg:block cursor-pointer">
+                  <h1 className="text-2xl pl-12 font-bold">LMS</h1>
                 </div>
                 {/* class tabs */}
 

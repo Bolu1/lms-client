@@ -8,12 +8,12 @@ function Loader(props: any) {
     <div>
       {props.fileType.includes("image") && (
         <div>
-          <div className="h-[40vh] w-[80vh]">
+          <div className="h-[250px] w-[250px] lg:h-[400px] lg:w-[400px]">
             <img
               crossOrigin="anonymous"
               src={process.env.NEXT_PUBLIC_IMAGE_URL + props?.fileUrl}
               alt=""
-              className="h-[40vh] max-w-[70vh] lg:max-w-[90vh] object-cover"
+              className="lg:h-full lg:w-full w-full h-full  object-cover"
             />
           </div>
           <a

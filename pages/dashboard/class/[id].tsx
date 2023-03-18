@@ -96,7 +96,7 @@ const Class: NextPage = () => {
 
   return (
     <Layout title={data?.class_name} tab={tab} setTab={setTab}>
-      <div className="w-[100vw] ">
+      <div className="w-full">
         {loading ? (
           <div className="mt-[20vh]">
             <Loader />
@@ -104,7 +104,7 @@ const Class: NextPage = () => {
         ) : (
           <>
           {tab == "class" &&
-          <div className="px-5 w-[100vh] md:w-full lg:px-32">
+          <div className="px-5 md:w-full lg:px-32">
             {/* header */}
             <div className="min-h-[16rem] overflow-hidden relative rounded-2xl bg-black/50 backdrop-blur-sm ">
               <div className="w-full h-full absolute">

@@ -118,7 +118,10 @@ const Sidebar = ({
                   </p>
                 </div> */}
 
-                <div className="flex items-center  space-x-2 w-[30px] cursor-pointer  mb-6"
+                <a 
+                href="https://lms-videocall.vercel.app/create"
+                target="blank"
+                className="flex items-center  space-x-2 w-[30px] cursor-pointer  mb-6"
                       style={{ marginBottom: "30px" , marginLeft: "2rem" }}
                 >
                   <svg
@@ -138,7 +141,7 @@ const Sidebar = ({
                   <p className="py-2 text-white text-xl font-bold text-center bg-violet-700 uppercase">
                     Video Call
                   </p>
-                </div>
+                </a>
                 <div className="flex items-center  space-x-2 w-[30px] cursor-pointer  mb-6"
                       style={{ marginBottom: "30px" , marginLeft: "2rem" }}
                 onClick={()=>{router.push("/dashboard/settings")}}

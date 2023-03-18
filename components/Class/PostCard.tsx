@@ -36,13 +36,11 @@ function Post(props:any) {
             </div>
       </div>
 
-      <div>
+      <div className=" overflow-hidden">
       <p
-                  dangerouslySetInnerHTML={{
-                    __html: props?.data?.content
-                      ?.substring(0, 1000000000)
-                      .replace(/\n/g, "<br/>"),
-                  }}
+                            dangerouslySetInnerHTML={{
+                              __html: props?.data.content?.replace(/\n/g, "<br/>"),
+                            }}
                   className="text-base"
                 />
         </div>

@@ -80,13 +80,16 @@ body {
 
 @media screen and (max-width: 600px) {
   .navoption {
-  width: 100%;
+  width: 90%;
     
   }
 
   .navoptionul li {
-    width: 100%;
-    font-size: 0.75rem;
+    width: 90%;
+    font-size: 0.8rem;
+    margin-left: 16px;
     /* line-height: 1rem;  */
     }
 }
+
+/* npm i ../../../Downloads/videoconfrencing/Builds/react-sdk/appbuilder-react-2.0.9-lCBX3eJDPW.tgz */

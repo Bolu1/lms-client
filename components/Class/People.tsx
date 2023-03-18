@@ -46,9 +46,9 @@ const People = (props: any) => {
             <Loader />
           </div>
         ) : (
-    <div className="px-5 w-[100vh] md:w-full lg:px-32">
+    <div className="px-5 md:w-full lg:px-32">
       <div className="mt-8">
-        <p className="text-4xl border-b border-black pb-4">Teachers</p>
+        <p className="lg:text-4xl text-xl border-b border-black pb-4">Teachers</p>
         <div className="my-4">
           {teachers && teachers.map((item:any)=>(
           <div className="flex items-center">
@@ -70,8 +70,8 @@ const People = (props: any) => {
 
       <div className="mt-12 w-full ">
         <div className="flex w-full border-b border-black pb-4 justify-between items-center">
-        <p className="text-4xl">Students</p>
-        <p className="">{students.length} student(s)</p>
+        <p className="lg:text-4xl text-xl">Students</p>
+        <p className="text-xs">{students.length} student(s)</p>
         </div>
         <div className="my-4">
         {students && students.map((item:any)=>(

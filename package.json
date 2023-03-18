@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@appbuilder/react": "file:../../../Downloads/videoconfrencing/Builds/react-sdk/appbuilder-react-2.0.9-lCBX3eJDPW.tgz",
     "@headlessui/react": "^1.7.12",
     "@heroicons/react": "^1.0.6",
     "@material-tailwind/react": "^1.2.5",
@@ -22,7 +23,7 @@
     "react-icons": "^4.7.1",
     "react-quill": "^2.0.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.8.1",
+    "react-router-dom": "^6.8.2",
     "react-spinners": "^0.13.8",
     "react-toastify": "^9.1.1",
     "timeago.js": "^4.0.2",
