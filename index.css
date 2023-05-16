@@ -75,21 +75,28 @@ body {
   transform: translateY(-50%);
 }
 .navoption li {
-  width: 58%;
+}
+
+
+.navoptionul{
+
+  gap: 60px;
 }
 
 @media screen and (max-width: 600px) {
   .navoption {
-  width: 90%;
     
   }
 
   .navoptionul li {
-    width: 90%;
     font-size: 0.8rem;
     margin-left: 16px;
     /* line-height: 1rem;  */
     }
+
+  .navoptionul {
+      gap: 1px
+  }
 }
 
 /* npm i ../../../Downloads/videoconfrencing/Builds/react-sdk/appbuilder-react-2.0.9-lCBX3eJDPW.tgz */

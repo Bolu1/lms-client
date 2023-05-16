@@ -32,7 +32,6 @@ const People = (props: any) => {
 
   useEffect(() => {
 
-    console.log(props)
     if (props.tab == "people") {
       fetchPeople()
     }

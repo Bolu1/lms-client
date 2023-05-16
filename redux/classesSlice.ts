@@ -246,4 +246,35 @@ export const createClassAction =
     }
   };  
 
+  export const editClassAction =
+  (className: string, classInformation: string, filename: string, classId:string, token:string, toast:any, router:any) => async (dispatch:any) => {
+    try {
+      dispatch(createClassStart());
+      const formData = new FormData();
+      formData.append("className", className);
+      formData.append("classInformation", classInformation);
+      formData.append("class_id", classId);
+      formData.append("image", filename);
+      const response = await axios.patch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}classes/edit`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
+      dispatch(createClassSuccess(response.data));
+      toast.success(response.data.message)
+      // router.push(`/dashboard/class/${response.data.data}`)
+    } catch (error: any) {
+      console.log("ss")
+      //   console.log(error instanceof Error);
+      toast.error(error.response.data.message);
+      dispatch(createClassFailure( error ));
+    }
+  };
+
+
 export default classesSlice.reducer;

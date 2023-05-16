@@ -4,17 +4,13 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { BiMenu, BiMenuAltRight } from "react-icons/bi";
-import Link from "next/link";
-import dot from "../assets/images/navdot.png";
-import shape1 from "../assets/images/shape1.png";
-import { useStore } from "react-redux";
-import avatarImg from "../public/login.svg";
-import { Button } from "@material-tailwind/react";
+import { useDispatch, useSelector } from "react-redux";
+
 import Sidebar from "./Sidebar";
 import CreateDropdown from "../components/Utils/CreateDropdown";
 // import { IUserProfile } from '../interfaces/UserProfile';
 
-const Navbar = (props:any) => {
+const Navbar = (props: any) => {
   const router = useRouter();
   const exclude = ["/auth/register", "/auth/login", "/"];
   const showAddButton = ["/dashboard"];
@@ -27,6 +23,7 @@ const Navbar = (props:any) => {
   // const user: any = server.user;
 
   useEffect(() => {}, []);
+  const { user } = useSelector((state: any) => state.auth);
 
   const shouldHide = exclude.includes(router.pathname);
   const shouldNotHideAddBotton = showAddButton.includes(router.pathname);
@@ -54,59 +51,97 @@ const Navbar = (props:any) => {
                 isScrolled && " "
               }`}
             >
-              <div className="w-full xl:max-w-[60%] lg:max-w-[70%] relative px-7  h-full items-center rounded-full bg-white/80 backdrop-blur-md drop-shadow-md border-gray-300 border flex justify-between mx-auto">
+              <div className="w-full xl:max-w-[60%] lg:max-w-[70%] relative px-7  h-full items-center rounded-full bg-white/80 backdrop-blur-md drop-shadow-md border-gray-300 border flex sm:justify-between mx-auto">
                 <div
                   onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                   className="w-[50px] h-[50px] mx-12 cursor-pointer flex justify-center items-center rounded-full bg-white/80 backdrop-blur-md drop-shadow-md "
                 >
                   <BiMenu className="w-8 h-8" />
                 </div>
-                <div className="w-[20%] hidden lg:block cursor-pointer">
+                <div
+                  onClick={() => {
+                    router.push("/dashboard");
+                  }}
+                  className="w-[20%] hidden lg:block cursor-pointer"
+                >
                   <h1 className="text-2xl pl-12 font-bold">LMS</h1>
                 </div>
                 {/* class tabs */}
 
                 <div className="navoption w-[58%]  h-full">
-                {props.tab &&
-                <ul className=" navoptionul w-full h-full  flex items-center">
-              <li 
-              onClick={()=>props.setTab("class")}
-              className={`text-base cursor-pointer ${props.tab == "class" ?("font-semibold "): ("text-gray-500") }`}>
-                Class
-                {props.tab == "class" &&
-                <div style={{ height: "3px"}}
-                 className="bg-black w-[30%]  hidden lg:block  rounded-full"></div>
-            }
-              </li>
-              <li 
-              onClick={()=>props.setTab("tasks")}
-              className={`text-base cursor-pointer ${props.tab == "tasks" ?("font-semibold "): ("text-gray-500") } `}>
-                Tasks
-                {props.tab == "tasks" &&
-
-                <div
-                      style={{ height: "3px"}}
-                 className="bg-black w-[30%] hidden lg:block  rounded-full"></div>
-          }
-              </li>
-              <li 
-              onClick={()=>props.setTab("people")}
-              className={`text-base cursor-pointer ${props.tab == "people" ?("font-semibold "): ("text-gray-500") } `}>
-                People
-                {props.tab == "people" &&
-
-                <div
-                      style={{ height: "3px"}}
-                 className="bg-black w-12 rounded-full hidden lg:block  "></div>
-        }
-              </li>
-            </ul>
-          }
+                  {props.tab && (
+                    <ul className=" navoptionul  w-full h-full  flex items-center justify-center">
+                      <li
+                        onClick={() => props.setTab("class")}
+                        className={`text-base cursor-pointer ${
+                          props.tab == "class"
+                            ? "font-semibold "
+                            : "text-gray-500"
+                        }`}
+                      >
+                        Class
+                        {props.tab == "class" && (
+                          <div
+                            style={{ height: "3px" }}
+                            className="bg-black   hidden lg:block  rounded-full"
+                          ></div>
+                        )}
+                      </li>
+                      <li
+                        onClick={() => props.setTab("tasks")}
+                        className={`text-base cursor-pointer ${
+                          props.tab == "tasks"
+                            ? "font-semibold "
+                            : "text-gray-500"
+                        } `}
+                      >
+                        Tasks
+                        {props.tab == "tasks" && (
+                          <div
+                            style={{ height: "3px" }}
+                            className="bg-black  hidden lg:block  rounded-full"
+                          ></div>
+                        )}
+                      </li>
+                      <li
+                        onClick={() => props.setTab("people")}
+                        className={`text-base cursor-pointer ${
+                          props.tab == "people"
+                            ? "font-semibold "
+                            : "text-gray-500"
+                        } `}
+                      >
+                        People
+                        {props.tab == "people" && (
+                          <div
+                            style={{ height: "3px" }}
+                            className="bg-black  rounded-full hidden lg:block  "
+                          ></div>
+                        )}
+                      </li>
+                      {user.id == props.teacher && (
+                        <li
+                          onClick={() => props.setTab("settings")}
+                          className={`text-base cursor-pointer ${
+                            props.tab == "settings"
+                              ? "font-semibold "
+                              : "text-gray-500"
+                          } `}
+                        >
+                          Settings
+                          {props.tab == "settings" && (
+                            <div
+                              style={{ height: "3px" }}
+                              className="bg-black  rounded-full hidden lg:block  "
+                            ></div>
+                          )}
+                        </li>
+                      )}
+                    </ul>
+                  )}
                 </div>
                 <div className=" ">
-                  {shouldNotHideAddBotton &&
-                  <CreateDropdown />
-                  }
+                  {shouldNotHideAddBotton && <CreateDropdown />}
                 </div>
               </div>
             </header>

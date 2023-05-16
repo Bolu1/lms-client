@@ -5,7 +5,7 @@ import Page from './Page';
 import Navbar from './Navbar';
 // import { IUserProfile } from '../interfaces/UserProfile';
 
-const Layout = ({ children, title, user, tab, setTab }: { children: any; title: string; user?:any, tab?:any, setTab?:any }) => {
+const Layout = ({ children, title, user, tab, setTab, teacher }: { children: any; title: string; user?:any, tab?:any, setTab?:any, teacher?:any }) => {
 	return (
 		<div 
 		style={{ maxWidth: "100vw" }}
@@ -22,7 +22,7 @@ const Layout = ({ children, title, user, tab, setTab }: { children: any; title: 
 			<div 
 		style={{ maxWidth: "100vw" }}
 			 className='container  overflow-auto'>
-                    <Navbar tab={tab} setTab={setTab}/>
+                    <Navbar tab={tab} setTab={setTab} teacher={teacher}/>
 					<Page user={user as any}>{children}</Page>
 
 			</div>

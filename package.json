@@ -18,6 +18,7 @@
     "next": "latest",
     "nprogress": "^0.2.0",
     "react": "18.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-quill": "^2.0.0",
@@ -33,10 +34,11 @@
     "@types/node": "18.11.3",
     "@types/nprogress": "^0.2.0",
     "@types/react": "18.0.21",
+    "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-dom": "18.0.6",
-    "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.2.4",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
     "typescript": "4.9.4"
   }
 }
