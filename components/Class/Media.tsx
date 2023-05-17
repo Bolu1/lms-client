@@ -20,6 +20,7 @@ function Loader(props: any) {
             download="File"
             href={process.env.NEXT_PUBLIC_IMAGE_URL + props?.fileUrl}
             title={props?.fileName}
+            target="blank"
           >
             <AiOutlineDownload className="h-8 w-8 my-2 cursor-pointer" />
           </a>
@@ -37,6 +38,7 @@ function Loader(props: any) {
             href={process.env.NEXT_PUBLIC_IMAGE_URL + props?.fileUrl}
             title=""
             className=""
+            target="blank"
           >
             <AiOutlineDownload className="h-8 w-8 my-2 cursor-pointer ml-2" />
           </a>
@@ -54,6 +56,7 @@ function Loader(props: any) {
             href={process.env.NEXT_PUBLIC_IMAGE_URL + props?.fileUrl}
             title=""
             className=""
+            target="blank"
           >
             <AiOutlineDownload className="h-8 w-8 my-2 cursor-pointer ml-2" />
           </a>
