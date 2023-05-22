@@ -40,7 +40,7 @@ const Dashboard: NextPage = () => {
             </div>
           ) : (
             <>
-              {data.length == 0 && !loading ? (
+              {data?.length == 0 && !loading ? (
                 <div className=" flex justify-center  w-full h-[100vh]">
                   <div className="w-full h-[30%] w-[30%]">
                     <Image src={hover} alt="power" className="" />
@@ -51,7 +51,7 @@ const Dashboard: NextPage = () => {
                 </div>
               ) : (
                 <div className="grid grid-cols-1 px-3 py-4 gap-y-10 sm:grid-cols-1 md:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 w-full">
-                  {data.map((item: any) => <Card data={item} />)}
+                  {data?.map((item: any) => <Card data={item} />)}
                 </div>
               )}
             </>

@@ -192,6 +192,7 @@ export const createClassAction =
       console.log(response.data.data);
       dispatch(createClassSuccess(response.data));
       toast.success("Successful")
+      return response.data.data
     } catch (error: any) {
       console.log("ss")
       //   console.log(error instanceof Error);

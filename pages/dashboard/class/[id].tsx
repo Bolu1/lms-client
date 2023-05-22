@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { withAuth } from "../../../utils/withAuth";
 import Layout from "../../../layouts/Layout";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchOneClassAction,
@@ -18,6 +18,7 @@ import Settings from "../../../components/Class/Settings";
 import Tasks from "../../../components/Class/Tasks";
 import hover from "../../../assets/images/readinghover.svg";
 import Loader from "../../../components/Utils/Loader";
+import { io } from "socket.io-client";
 
 const Class: NextPage = () => {
   const [data, setData] = useState<any>({});
@@ -30,10 +31,41 @@ const Class: NextPage = () => {
   const [showMoreLoading, setShowMoreLoading] = useState(false);
   const [teachers, setTeachers] = useState([]);
   const [students, setStudents] = useState([]);
+  const socket: any = useRef();
 
   const { user } = useSelector((state: any) => state.auth);
   const router = useRouter();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    socket.current = io("ws://localhost:8000");
+    socket.current.on("getMessage", (responseData:any) => {
+      console.log(responseData)
+      let temp = [...posts, responseData]
+    // @ts-ignore
+      setPosts(temp)
+      // setArrivalMessage({
+      //   sender: data.senderId,
+      //   text: data.text,
+      //   created_at: Date.now(),
+      // });
+      // console.log("recieved", arrivalMessage);
+    });
+
+  }, []);
+
+  // useEffect(() => {
+  //   arrivalMessage &&
+  //     currentCounter.id == arrivalMessage.sender &&
+  //     setMessages((prev) => [...prev, arrivalMessage]);
+  // }, [arrivalMessage, currentChat]);
+
+  useEffect(() => {
+    if(slug == ""){
+      return
+    }
+    socket?.current.emit("addUser", slug);
+  }, [slug, user]);
 
   const fetch = async (id: any = slug, page: number = 0) => {
     setLoading(true);
@@ -98,6 +130,13 @@ const Class: NextPage = () => {
       }
     }
   }, [router.isReady]);
+
+  const emitPost = (post:any)=>{
+    socket.current.emit("sendMessage", {
+      classId: slug,
+      post:post
+    });
+  }
 
   return (
     <Layout
@@ -180,7 +219,7 @@ const Class: NextPage = () => {
                   </div>
                 </div>
                 <div className="mt-5">
-                  <Post classId={slug} action={fetch} />
+                  <Post classId={slug} action={fetch} emitPost={emitPost}/>
                 </div>
                 <div className="mt-8">
                   {posts?.length == 0 ? (

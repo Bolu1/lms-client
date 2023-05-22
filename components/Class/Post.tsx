@@ -33,8 +33,9 @@ function Post(props:any) {
     setLoading(true)
     e.preventDefault()
     // @ts-ignore
-    await dispatch(createNewPost(content, props.classId, fileName, user.token, toast));
+    const result = await dispatch(createNewPost(content, props.classId, fileName, user.token, toast));
     props.action()
+    props.emitPost({result})
     setContent("")
     setFileName(null)
     setLoading(false)    
