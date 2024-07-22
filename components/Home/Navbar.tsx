@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
 import Router, { useRouter } from "next/router";
+import axios from "axios";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,6 +26,11 @@ const Navbar = () => {
   const activeLink = "text-[#1a73e8] font-bold ";
   const normalLink = "   ";
   const router = useRouter();
+
+  useEffect(() => {
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}`);
+  }, []);
+
   return (
     <div>
       <Sidebar
@@ -36,7 +42,7 @@ const Navbar = () => {
           isScrolled && " "
         }`}
       >
-        <div className="w-full lg:hidden justify-between items-center flex px-4">
+        <div className="flex items-center justify-between w-full px-4 lg:hidden">
           <h1 className="text-2xl font-bold cursor-pointer">LMS</h1>
           <div
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -56,7 +62,7 @@ const Navbar = () => {
             <h1 className="text-2xl font-bold">LMS</h1>
           </div>
           <div className="w-[58%]  h-full">
-            <ul className="w-full h-full space-x-8 flex items-center">
+            <ul className="flex items-center w-full h-full space-x-8">
               <li className="text-base font-semibold">
                 <Link href="#about">About us</Link>
               </li>
@@ -70,8 +76,10 @@ const Navbar = () => {
           </div>
           <div className="">
             <Button
-              className="bg-black text-white rounded-lg px-3"
-              onClick={()=>{router.push("/auth/register")}}
+              className="px-3 text-white bg-black rounded-lg"
+              onClick={() => {
+                router.push("/auth/register");
+              }}
               nonce={undefined}
               onResize={undefined}
               onResizeCapture={undefined}
